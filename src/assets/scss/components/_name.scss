@@ -1,0 +1,70 @@
+/*
+*
+*   Name.vue
+*   Roy Peckham
+*
+*/
+
+
+/* --------------------------------------------
+*  Main / General
+*
+*/
+#name_container{
+    font-family: $Muli;
+    @include standard_size(0, 20px, $max_width: 1200px);
+}
+.name-row{
+    width:100%;
+    padding-bottom: 50px;
+    border-bottom: 1px solid darken($color-background, 5%)
+}
+
+
+/* --------------------------------------------
+*  Ad
+*
+*/
+#name_ad{
+    width: 728px;
+    height: 90px;
+    background-color: #444;
+    margin: 0 auto;
+}
+
+
+/* --------------------------------------------
+*  Row 1 - Name, Google
+*
+*/
+#name_row-name{  
+    margin-top:50px;  
+    height: 250px;
+    #name-name{
+        width: 50%;
+        height: 200px;
+        float: left;
+        padding-top:50px;
+        h1{
+            text-align: left;
+            font-size: 96px;
+            line-height:56px;
+            color: $color-boy;
+            padding: 25px 0;
+            
+        }
+        #name-id{
+            font-size: 18px;
+            font-weight: 900;
+        }
+    }
+    #name-google{
+        width: 50%;
+        height: 250px;
+        float: left;
+        canvas{
+            height: 250px !important;
+            width:100%!important;
+        }
+    }
+}

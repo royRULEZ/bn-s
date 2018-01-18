@@ -1,0 +1,197 @@
+/*
+*
+*   Home.vue
+*   Roy Peckham
+*
+*/
+
+/* --------------------------------------------
+*  Main / General
+*
+*/
+#home_container{
+    font-family: $Muli;
+    //@include standard_size(0, 20px, $max_width: 1200px);
+} 
+
+
+/* --------------------------------------------
+* Hero
+*
+*/
+#bn_hero{
+    width: 100%;
+    overflow: auto;
+    padding: 50px 0;
+    text-align: center;
+    $bg-color: #FFF;
+    $dot-color: darken($color-background, 10%);
+    // Grid
+    $dot-size: 1px;
+    $dot-space: 10px;
+    background:
+    linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+    linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+    $dot-color;
+    background-size: $dot-space $dot-space;    
+    background: #EEE url('assets/images/header_normal.png');
+    background-position: center;
+    background-size: cover;
+    // /Grid
+    #bn_hero-inner{
+        @include standard_size(0, 0, $max_width: 510px);
+        h1{
+            width:100% !important;
+            display: block;
+            text-align: center;
+            font-size: 28px;
+            line-height: 32px;
+            font-weight: 800;
+            color: #FFF;
+        }
+        .bn_circle{
+            margin: 25px;            
+            float: left;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            text-align: center;
+            color: #FFF;
+            font-weight: 100;
+            font-size: 24px;
+            font-family: $Nixie;
+            line-height: 120px;
+            cursor: pointer;
+            &.boy{
+                background-color: $color-boy;
+            }
+            &.girl{
+                background-color: $color-girl;
+            }
+            &.uni{
+                background-color: $color-uni;
+            } 
+        }
+        #or{
+           color: $color-white;
+           font-weight: 100; 
+           font-family: $Nixie;
+        }
+        .bn_hero-cta{
+            margin-top: 10px;
+            color: $color-white;
+            border: 1px solid $color-white;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 2px;
+            cursor: pointer;
+            &:hover{
+                background-color: $color-white;
+                color: $color-accent-1;
+            }
+        }
+
+    }
+} 
+
+
+/* --------------------------------------------
+* Ad
+*
+*/
+#home-ad{
+    width: 728px;
+    height: 90px;
+    margin: 25px auto;
+    background-color: #555;
+}
+
+
+/* --------------------------------------------
+* Text
+*
+*/
+#home-text{
+    @include standard_size(50px, 0, $max_width: 768px);
+    div{
+        text-align: center;
+        font-size: 28px;
+        color: $color-accent-1;
+    }
+}
+
+
+
+/* --------------------------------------------
+* Text
+*
+*/
+.link-row{
+    @include standard_size(50px, 25px, $max_width: 1024px);
+    border-top: 1px solid $color-lines;
+}
+#link_row-names{
+    .random_names{
+        width:50%;
+        float:left;
+        padding: 25px;
+        box-sizing: border-box;
+        .random_names-title{
+            font-size: 18px;
+            padding: 10px 0;
+        }
+        .name{
+            width: 25%;
+            float: left;
+            padding: 5px 0;
+            a{
+                text-decoration: underline;
+                color: $color-links;
+            }
+            &.boy{
+                a{
+                    color: darken($color-boy, 15%);
+                }
+            }
+            &.girl{
+                a{
+                    color: darken($color-girl, 15%);
+                }
+            }            
+        }
+    }
+}
+#link_row-collections{
+    .collection{
+        margin-top: 50px;
+        width: 33%;
+        margin-right:0.5%;
+        float: left;
+        background-color: #FFF;
+        height: 300px;
+        &:last-child{
+            margin-right:0;
+        }
+    }
+}
+#link_row-alpha{
+    .alphas{
+        width:50%;
+        float:left;
+        padding: 25px;
+        box-sizing: border-box;
+        .alphas-title{
+            font-size: 18px;
+            padding: 10px 0;
+        }
+        .alpha{
+            width: 12.5%;
+            float: left;
+            padding: 5px 0;
+            a{
+                text-decoration: underline;
+                color: $color-links;
+            }
+        }
+    } 
+}

@@ -1,0 +1,116 @@
+/*
+*
+*   Home.vue
+*   Roy Peckham
+*
+*/
+
+
+
+
+/* --------------------------------------------
+*  Main / General
+*
+*/
+#explore_container{
+    font-family: $Muli;
+    h1{
+        text-align: center;
+        font-size: 32px;
+        color: $color-accent-1;
+        padding: 25px 0;
+
+    }
+
+} 
+
+
+
+/* --------------------------------------------
+*  Ad
+*
+*/
+#explore_ad{
+    width: 100%;
+    padding: 25px 0;
+    margin-bottom: 25px;
+    background-color: darken($color-background, 10%);
+    #ad{
+        width: 970px;
+        height: 250px;
+        background-color: #444;
+        margin: 0 auto;
+    }
+}
+
+
+
+/* --------------------------------------------
+*  Content
+*
+*/
+#explore_content{
+    @include standard_size(0, 20px, $max_width: 1200px);
+}
+
+#explore-content{
+    #all_filters{
+        width: 20%;
+        float: left;
+        #explore-popularity{
+            padding: 25px 0;
+            #popularity-label{
+                font-size: 10px;
+                padding-bottom: 5px;
+                color: $color-accent-1;
+            }
+            #popularity_select{
+                background-color: $color-accent-1 !important;
+                color: $color-white !important;
+                .input-group__selections__comma{
+                    color: #FFF !important;
+                }
+                label{
+                    color: $color-white !important;
+                }
+            }
+            
+        }
+        #explore-filters{
+            background-color:$color-darkgrey;
+            height: 800px;
+            .filter-section{
+                width: 100%;
+                background-color: lighten($color-darkgrey, 5%);
+                padding: 20px 0;
+                margin-bottom: 5px;
+            }
+            #filters-selected{
+
+            }
+        }
+    }
+    #explore_names{
+        width: 80%;
+        float: left;
+        display: flex;
+        flex-wrap: wrap;
+        .name{
+            padding: 40px 30px;
+            width: 20%;
+            font-size: 28px;
+            font-weight: 400;
+            box-sizing: border-box;
+            a{
+                color: $color-text !important;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            border-bottom: 1px dashed darken($color-background, 5%);
+        }
+    } 
+}   
+
+
+

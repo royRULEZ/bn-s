@@ -1,0 +1,134 @@
+// Main
+// Author: Roy Peckham
+
+// Imports
+// @import "modules/colors";
+// @import "modules/vendorMixins";
+@import "modules/mixins";
+@import "modules/reset";
+@import "modules/standards";
+
+@import "modules/fonts";
+@import "modules/grid";
+@import "modules/effects";
+
+//@import "modules/forms";
+@import "modules/buttons";
+//@import "modules/navigation";
+
+@import "variables";
+
+@import "components/home";
+@import "components/explore";
+@import "components/name";
+
+
+/* -------------------------------------------------
+/* Global
+/*
+/*
+*/ 
+
+html{
+    //font-size: $base-font-size-percentage;
+    font-family: $Muli !important;
+}
+body{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: $base-line-height !important;
+    font-family: $Muli !important;
+    color: $color-text !important;
+    font-size: $base-font-size !important;
+    background-color:$color-background !important;
+}
+
+
+
+/* ------------------------------------------------- 
+*   Fix Vuetify 
+*
+*
+*/
+.application{
+    font-family: inherit;
+    line-height: inherit;
+    &.theme--light{
+        background: inherit;
+    }
+    .menu_content{
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+
+
+/* ---------------------------------------------------------- */
+/* ---------------------------------------------------------- */
+/* ---------------------------------------------------------- */
+/* App.vue                                                    */
+/* ---------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------
+*   Header
+*
+*
+*/
+#toolbar{
+    background: $color-background;
+    .toolbar__title{
+        font-weight: 200;
+        letter-spacing: normal;
+        font-size:28px;
+        cursor: pointer;
+        padding-top:10px;
+    }
+    .toolbar__content{
+        //height: 64px !important;
+    }
+}
+header{
+    background-color: $color-background;
+    ul{
+        text-align: center;
+        padding-bottom: 25px;
+        li{
+            display:inline;
+            padding: 0px 20px;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 16px;
+            a{
+                color: $color-text !important;
+                transition: none !important;
+                -webkit-transition: none !important;
+                &:hover{
+                    color: $color-accent-1 !important;
+                    font-weight: 700;
+
+                }
+                &.router-link-active{
+                    color: $color-accent-1 !important;
+                    font-weight: 700;
+                }
+            }
+            //color: $color-links;
+        }
+    }
+}
+
+
+
+
+/* -------------------------------------------------
+*   Footer
+*
+*
+*/
+footer{}
