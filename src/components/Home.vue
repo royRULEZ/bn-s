@@ -65,9 +65,64 @@
 
         <!-- Collections -->
         <div id="link_row-collections" class="link-row clearfix">
-            <div class="collection"></div>          
-            <div class="collection"></div> 
-            <div class="collection"></div> 
+            <div class="collection">
+                <div class="collection-picture">
+                    Famous African American Women
+                </div>
+                <div class="collection-names clearfix">
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                </div>
+                <div class="collection-link">
+                    <v-btn depressed large>View Collection</v-btn>
+                </div>
+            </div>          
+            <div class="collection">
+    
+                <div class="collection-picture" :style="{ backgroundImage: `url('${image}')` }">
+                
+                    Famous African American Women
+                </div>
+                <div class="collection-names clearfix">
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                </div>
+                <div class="collection-link">
+                    <v-btn depressed large>View Collection</v-btn>
+                </div>
+    
+    
+            </div> 
+            <div class="collection">
+    
+                
+    
+                <div class="collection-picture">
+                    Famous African American Women
+                </div>
+                <div class="collection-names clearfix">
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
+                </div>
+                <div class="collection-link">
+                    <v-btn depressed large>View Collection</v-btn>
+                </div>
+    
+    
+    
+            </div> 
         </div>
         <!-- /Collections -->   
 
@@ -75,13 +130,13 @@
         <div id="link_row-alpha" class="link-row clearfix">
             <div class="alphas clearfix">
                 <div class="alphas-title">Search By Letter - Boys</div>
-                <div class="alpha" v-for="alpha in alphabet" :key="alpha">
+                <div class="alpha boy" v-for="alpha in alphabet" :key="alpha">
                     <router-link :to="`/explore?p=Unique&g=M&a=${alpha}`">{{alpha}}</router-link>
                 </div>
             </div>         
             <div class="alphas clearfix">
                 <div class="alphas-title">Search By Letter - Girls</div>
-                <div class="alpha" v-for="alpha in alphabet" :key="alpha">
+                <div class="alpha girl" v-for="alpha in alphabet" :key="alpha">
                     <router-link :to="`/explore?p=Unique&g=F&a=${alpha}`">{{alpha}}</router-link>
                 </div>
             </div>            
