@@ -80,13 +80,18 @@
                 <div class="collection-link">
                     <v-btn depressed large>View Collection</v-btn>
                 </div>
-            </div>          
+            </div>    
+            
+            <img :src="'/src/assets/images/collections/' + imgSRC">
             <div class="collection">
-    
-                <div class="collection-picture" :style="{ backgroundImage: `url('${image}')` }">
+                <!--
+                <div class="collection-picture" :style="{ backgroundImage: `url('/src/assets/images/collections/winter.jpg')` }">
+                
+                 <img :src="'/src/assets/images/lists/' + listItem.i"> 
                 
                     Famous African American Women
                 </div>
+                -->
                 <div class="collection-names clearfix">
                     <div class="collection-name"><router-link to="/">Christopher</router-link></div>
                     <div class="collection-name"><router-link to="/">Christopher</router-link></div>
@@ -156,7 +161,8 @@ export default {
         return {
             boy_names_20: [],
             girl_names_20: [],
-            alphabet: alphabet
+            alphabet: alphabet,
+            imgSRC: "christmas.jpeg"
         };
     },
     methods: {
