@@ -28,7 +28,6 @@
                 <li><router-link to="/" exact>Home</router-link></li>
                 <li><router-link to="/explore?p=Unique&g=F">Explore</router-link></li>
                 <li><router-link to="/g">Get Inspired</router-link></li>
-                <li><router-link to="/n">Name Quiz</router-link></li>
                 <li><router-link to="/h">Choosing a Name</router-link></li>
                 <li><router-link to="/gi">Gifts</router-link></li>
             </ul>

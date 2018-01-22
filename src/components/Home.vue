@@ -82,16 +82,15 @@
                 </div>
             </div>    
             
-            <img :src="'/src/assets/images/collections/' + imgSRC">
+            
             <div class="collection">
-                <!--
-                <div class="collection-picture" :style="{ backgroundImage: `url('/src/assets/images/collections/winter.jpg')` }">
-                
-                 <img :src="'/src/assets/images/lists/' + listItem.i"> 
-                
+
+                <div class="collection-picture" :style="{ backgroundImage: `url('/static/images/collections/winter.jpg')` }">
                     Famous African American Women
                 </div>
-                -->
+
+
+
                 <div class="collection-names clearfix">
                     <div class="collection-name"><router-link to="/">Christopher</router-link></div>
                     <div class="collection-name"><router-link to="/">Christopher</router-link></div>
