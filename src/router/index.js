@@ -36,7 +36,9 @@ export default new Router({
       p: route.query.p,
       g: route.query.g,
       a: route.query.a,
-      l: route.query.l
+      l: route.query.l,
+      t: route.query.t,
+      o: route.query.o
     })
   },
   {

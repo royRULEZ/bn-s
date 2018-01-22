@@ -85,7 +85,7 @@ body{
     .toolbar__title{
         font-weight: 200;
         letter-spacing: normal;
-        font-size:28px;
+        font-size: 32px;
         cursor: pointer;
         padding-top:10px;
     }
@@ -97,25 +97,26 @@ header{
     background-color: $color-background;
     ul{
         text-align: center;
-        padding-bottom: 25px;
+        padding-bottom: 20px;
+        padding-top: 5px;
         li{
             display:inline;
             padding: 0px 20px;
             cursor: pointer;
-            font-weight: 300;
+            font-weight: 500;
             font-size: 16px;
+            
             a{
                 color: $color-text !important;
                 transition: none !important;
-                -webkit-transition: none !important;
                 &:hover{
                     color: $color-accent-1 !important;
-                    font-weight: 700;
+                    //font-weight: 700;
 
                 }
                 &.router-link-active{
                     color: $color-accent-1 !important;
-                    font-weight: 700;
+                    //font-weight: 700;
                 }
             }
             //color: $color-links;
