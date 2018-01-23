@@ -162,8 +162,13 @@
     }
 }
 #link_row-collections{
+    .collections-title{
+        width: 100%;
+        font-size: 18px;
+        padding: 25px 25px 0 25px;
+    }    
     .collection{
-        margin-top: 50px;
+        margin-top: 25px;
         width: 33%;
         margin-right:0.5%;
         float: left;

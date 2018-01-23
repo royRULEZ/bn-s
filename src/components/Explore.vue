@@ -112,7 +112,7 @@
                 </div>    
                 <div id="explore_names">
                     <div class="name" v-for="name in names">
-                        <router-link :to="`/name/${name.name}`">{{name.name}}</router-link>
+                        <router-link :to="`/name?n=${name.name}`">{{name.name}}</router-link>
                     </div>
                     <v-pagination :length="6" v-model="page"></v-pagination>
                 </div>                            

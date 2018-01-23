@@ -39,7 +39,7 @@
 */
 #name_row-name{  
     margin-top:50px;  
-    height: 250px;
+    padding: 0 0 25px 0;
     #name-name{
         width: 50%;
         height: 200px;
@@ -48,10 +48,15 @@
         h1{
             text-align: left;
             font-size: 96px;
-            line-height:56px;
-            color: $color-boy;
+            line-height:64px;
+            color: $color-uni;
             padding: 25px 0;
-            
+            &.boy{
+                color: darken($color-boy, 15%);
+            }
+            &.girl{
+                color: darken($color-girl, 15%);
+            }
         }
         #name-id{
             font-size: 18px;

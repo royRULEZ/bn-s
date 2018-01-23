@@ -65,6 +65,7 @@
 
         <!-- Collections -->
         <div id="link_row-collections" class="link-row clearfix">
+            <div class="collections-title">Fresh Collections</div>
             <div class="collection">
                 <div class="collection-picture">
                     Famous African American Women
