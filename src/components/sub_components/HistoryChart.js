@@ -9,11 +9,7 @@ var options = {
         yAxes: [{ 
             gridLines: {
                 display: true 
-            }, 
-            ticks: { 
-                suggestedMax: 100,
-                suggestedMin: 0 
-            } 
+            }
         }], 
         xAxes: [{
             display: true,

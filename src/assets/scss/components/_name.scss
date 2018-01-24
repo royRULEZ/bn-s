@@ -17,9 +17,19 @@
 .name-row{
     width:100%;
     padding-bottom: 50px;
-    border-bottom: 1px solid darken($color-background, 5%)
+    border-bottom: 1px solid darken($color-background, 5%);
+    .row-25{
+        width: 25%;
+        float: left;
+    }
 }
-
+.name-title{
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #999;
+}
 
 /* --------------------------------------------
 *  Ad
@@ -44,7 +54,6 @@
         width: 50%;
         height: 200px;
         float: left;
-        padding-top:50px;
         h1{
             text-align: left;
             font-size: 96px;
@@ -62,6 +71,28 @@
             font-size: 18px;
             font-weight: 900;
         }
+        #name-meaning{
+            font-style: italic;
+        }
+        #name-occurrence{
+            
+        }
+
+        #name-origin{
+            .origin-link{
+                padding-right: 5px;
+                &::after{
+                    content: ',';
+                }
+                &:last-child::after{
+                    content: '';
+                }
+                a{
+                    color: $color-accent-1;
+                    text-decoration: underline;
+                }
+            }
+        }
     }
     #name-google{
         width: 50%;
@@ -72,4 +103,62 @@
             width:100%!important;
         }
     }
+}
+
+
+#name_row-data{
+    margin-top: 25px;  
+    padding: 0 0 25px 0; 
+    #name_row-variations{
+        .name_row-variation{
+            width: 50%;
+            float: left;
+            padding: 2px 0;
+            font-size: 20px;
+            font-weight: 300;        
+            a{
+                color: $color-accent-1;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+#name_row-th_col{
+    margin-top: 25px;  
+    padding: 0 0 25px 0; 
+}
+
+#name_row-gifts{
+    margin-top: 25px;  
+    padding: 0 0 25px 0; 
+    .name-title{
+        margin-bottom: 10px;
+    }
+    .gifts-item{
+        width: 24.25%;
+        float: left;
+        margin-right: 1%;
+        .gi_photo{
+            img{
+                border: 1px solid darken($color-background, 15%);
+            }
+        }
+        .gi_description{
+            font-weight: 600; 
+        }
+        .gi_price{
+                       
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }  
+}
+
+
+#name_row-amazon{
+    margin-top: 25px;  
+    padding: 0 0 25px 0; 
 }
