@@ -6,6 +6,7 @@ import Name from '@/components/Name'
 import Explore from '@/components/Explore'
 import Inspire from '@/components/Inspire'
 import Store from '@/components/Store'
+import Collection from '@/components/Collection'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
     path: '/get-inspired',
     name: 'Inspire',
     component: Inspire
+  },
+  {
+    path: '/collection/:collection',
+    name: 'Collection',
+    component: Collection
   },
   {
     path: '/store',

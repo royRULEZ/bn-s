@@ -11,14 +11,11 @@
         <v-toolbar id="toolbar" class='elevation-0'>
             <v-toolbar-side-icon @click="sideNav = !sideNav"></v-toolbar-side-icon>
             <v-spacer></v-spacer>
-            <v-toolbar-title @click="goHome">BabyNamr</v-toolbar-title>
+            <v-toolbar-title @click="goHome">B<span class="title-girl">a</span>byN<span class="title-boy">a</span>mr</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
                 <v-icon>search</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon>favorite</v-icon>
-            </v-btn>      
+            </v-btn>     
         </v-toolbar>
         <!-- /Toolbar -->
 
@@ -27,7 +24,7 @@
             <ul>
                 <li><router-link to="/" exact>Home</router-link></li>
                 <li><router-link to="/explore?p=Unique&g=F">Explore</router-link></li>
-                <li><router-link to="/g">Get Inspired</router-link></li>
+                <li><router-link to="/get-inspired">Get Inspired</router-link></li>
                 <li><router-link to="/h">Choosing a Name</router-link></li>
                 <li><router-link to="/gi">Gifts</router-link></li>
             </ul>
@@ -44,7 +41,7 @@
 
         <!-- Footer -->
         <footer>
-            This is my footer
+            
         </footer>
         <!-- /Footer -->
     </v-app>

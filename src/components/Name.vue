@@ -5,23 +5,33 @@
         <div id="name_ad"></div>
         <!-- /Ad -->
 
+        <!-- Social CTA -->
+        <div id="name_row-social" class="name-row clearfix">
+            <v-btn left>My Names<v-icon>add</v-icon></v-btn>
+            <v-btn left>Share<v-icon>share</v-icon></v-btn>
+        </div>
+        <!-- Social CTA -->
+        
         <!-- Name Row -->
         <div id="name_row-name" class="name-row clearfix">
             <div id="name-name">
-                <div class="name-title">Name, Rank & Meaning</div>
+                <h2>Rank & Meaning of {{name[0].name}}</h2>
                 <h1 v-bind:class="{girl: name[0].gender == 'F', boy: name[0].gender == 'M'}">
                     {{name[0].name}}
                 </h1>
-                <div id="name-id">#{{name[0].rank | Commas}}</div>
-                <div id="name-occurrence">{{name[0].occurrences | Commas}} baby {{name[0].gender | GenderFilter}}s were named {{name[0].name}} last year.</div>
-                <div v-if="name[1]" id="name-occurrence">{{name[1].occurrences | Commas}} baby {{name[1].gender | GenderFilter}}s were named {{name[1].name}} last year.</div>
                 <div id="name-meaning">Sophie (meaning "Wisdom") is the diminutive of Sophia. </div>
                 <div id="name-origin">Origin: <span class="origin-link"><router-link to="/">Origin1</router-link></span><span class="origin-link"><router-link to="/">Origin1</router-link></span></div>
+                <div id="name-origin">Themes: <span class="origin-link"><router-link to="/">Origin1</router-link></span><span class="origin-link"><router-link to="/">Origin1</router-link></span></div>
+                <div id="name-stats">
+                    <div id="name-id">Popular, #{{name[0].rank | Commas}}</div>
+                    <div class="name-occurrence">{{name[0].occurrences | Commas}} baby {{name[0].gender | GenderFilter}}s were named {{name[0].name}} last year.</div>
+                    <div v-if="name[1]" class="name-occurrence">{{name[1].occurrences | Commas}} baby {{name[1].gender | GenderFilter}}s were named {{name[1].name}} last year.</div>
+                </div>
             </div>
             <div id="name-google">
-                <!--<line-chart :chart-data="GoogleChart_data"></line-chart>-->
-                <!--<line-chart :chart-data="GoogleChart_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales:{yAxes:[{ticks:{suggestedMax:100,suggestedMin:0}}], xAxes:[{display:true, gridLines: {display: false}}]}}"></line-chart>-->
-                <div class="name-title">Popularity over the last 10 years</div>
+                <h2>
+                    Is {{name[0].name}} a popular name?
+                </h2>
                 <history-chart :chart-data="History_data"></history-chart>
             </div>
         </div>
@@ -30,23 +40,57 @@
 
         <div id="name_row-data" class="name-row clearfix">
             <div id="name_row-variations" class="row-25 clearfix">
-                <div class="name-title">Variations of {{name[0].name}}</div>
+                <h2>Variations of {{name[0].name}}</h2>
                 <div class="name_row-variation" v-for="variation in variations">
                     <router-link :to="`/name?n=${variation.name}`">{{variation.name}}</router-link>
                 </div>
 
             </div>
-            <div class="row-25">
-                <div class="name-title">Top Results for {{name[0].name}}</div>
-                <div v-for="topic in GoogleAutoComplete_data">
-                    {{topic.title}} --- {{topic.type}}
+            <div id="name_row-autocomplete" class="row-25">
+                <h2>What's '{{name[0].name}}' known for?</h2>
+                <div class="autocomplete-topic" v-for="topic in GoogleAutoComplete_data">
+                    <div class="autocomplete-title">{{topic.title}}</div>
+                    <div class="autocomplete-type">{{topic.type}}</div>  
                 </div>
             </div>
+            <div id="name_row-collections" class="row-25">
+                <h2>Collections featuring {{name[0].name}}</h2>
+                <div class="name_row-collection">
+                    <router-link to="/">Presidential</router-link><br/>
+                    <router-link to="/">Famous Black Women</router-link><br/>
+                    <router-link to="/">Billionaies</router-link><br/>
+                    <router-link to="/">Christmas</router-link>
+                </div>
+            </div>            
+            <div id="name_row-songs" class="row-25">
+                <h2>What is {{name[0].name}}'s song?</h2>
+                <a target="_blank" v-bind:href="song.trackViewUrl" tag="div" class="name-song clearfix" v-for="song in itunes">
+                    <div class="song-details">
+                        <div class="song-title">{{song.trackName}}</div>
+                        <div class="song-artist">{{song.artistName}}</div>
+                    </div>
+                    <div class="song-icon"><v-icon>play_arrow</v-icon></div> 
+                </a>
+            </div>            
         </div>
 
+        <div id="name_row-related" class="name-row clearfix">
+            <h2>What names are related to {{name[0].name}}?</h2>
+            <div class="name-related" v-for="variation in variations">
+                <router-link :to="`/name?n=${variation.name}`">{{variation.name}}</router-link>
+            </div>
+        </div>
+        
+        <div id="name_row-google" class="name-row clearfix">
+            <h2>Google Searches for {{name[0].name}}</h2>
+
+            <!--<line-chart :chart-data="GoogleChart_data"></line-chart>-->
+            <!--<line-chart :chart-data="GoogleChart_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales:{yAxes:[{ticks:{suggestedMax:100,suggestedMin:0}}], xAxes:[{display:true, gridLines: {display: false}}]}}"></line-chart>-->
+        </div>
+        
         <!-- TODO: BOY GIFTS!! -->
         <div id="name_row-gifts" class="name-row clearfix">
-            <div class="name-title">Personalized Gifts for {{name[0].name}}</div>
+            <h2>Personalized Baby Gifts for {{name[0].name}}</h2>
             <div class="gifts-item">
                 <div class="gi_photo">
                     <img :src="'https://preview.personalizationmall.com/preview.iglx?igOutput=Jpg85&amp;productid=12169&amp;itemid=55695&amp;value1=' + name[0].name">
@@ -77,35 +121,35 @@
             </div>                                    
         </div>
 
-        
-        <div id="name_row-th_col" class="name-row clearfix">
-            <div class="name-title">Themes & Collections</div>
-        </div>
-
-        <!-- TODO: BOY GIFTS!! -->
         <div id="name_row-amazon" class="name-row clearfix">
-            <div class="name-title">Popular gifts for {{name[0].name}}</div>
+            <h2>Popular baby gifts for {{name[0].name}}</h2>
+            <div class="amazon-item">
+                <div class="a_photo">
+                    <img src="/static/images/amazon/2.jpg">
+                </div>
+                <div class="a_description">Gerber Baby Girls' 4 Pack Flannel Burp Cloths</div>
+                <div class="a_price">$10.99</div>
+            </div> 
+            <div class="amazon-item">
+                <div class="a_photo">
+                    <img src="/static/images/amazon/3.jpg">
+                </div>
+                <div class="a_description">Nuby Ice Gel Teether Keys</div>
+                <div class="a_price">$5.99</div>
+            </div>             
         </div>
-        
-
+    
+    
         <!--
-            Top 10 Cities searchnig for this name
-            googleTrends.interestByRegion({keyword: 'Lily', resolution: "CITY"})
+        <div id="name_row-newsletter" class="name-row clearfix">
+            Newsletter
+        </div>  
         -->
-
-
-        <!--
-        <div class="alpha" v-for="actor in actors.d">
-            {{actor.l}}
-        </div>
-        -->
-
 
     </div>    
 </template>
 
 <script>
-//https://itunes.apple.com/search?term=sophie&entity=song&limit=5
 import axios from 'axios';
 import GoogleChart from './sub_components/GoogleChart';
 import HistoryChart from './sub_components/HistoryChart';
@@ -125,7 +169,9 @@ export default {
             GoogleAutoComplete_data: [],
             name: [],
             variations: [],
-            actors: {}
+            itunes: [],
+            actors: {},
+            reddit: []
         };
     },
     methods: {
@@ -160,34 +206,46 @@ export default {
         },
         getHistory: function (){
             //[{'year': 2005, 'occurrences': 6050},{'year': 2006, 'occurrences': 5050},{'year': 2007, 'occurrences': 3050},{'year': 2008, 'occurrences': 8050},{'year': 2009, 'occurrences': 2340},{'year': 2010, 'occurrences': 2050},{'year': 2011, 'occurrences': 6344}],
-            var data_obj = [234,5345,3456,436,4645,6756,7456,745,546,456,5457,4567];
+            var data_obj = [234,300,500,836,4645,6756,7456,745,546,456,5457,4567];
             var data_labels = ['2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016'];
-            this.History_data = {labels: data_labels,"datasets":[{"label": "Occurrences", "backgroundColor":"rgba(43,176,165,.6)", "borderColor": "rgba(0,0,0,0)","data":data_obj}]};
+            this.History_data = {labels: data_labels,"datasets":[{"label": "Babies", "backgroundColor":"rgba(43,176,165,.6)", "borderColor": "rgba(0,0,0,0)","data":data_obj}]};
         },
         getGoogleAutoComplete: function (){
+            /*
             axios.get("http://localhost:8088/google-autocomplete/" + this.n)
             .then(response => {
                 //console.log(response);
                 this.GoogleAutoComplete_data = response.data.default.topics;
-            })    
-            //[ { "mid": "/m/0d7d5", "title": "Alexandra Feodorovna", "type": "Alix of Hesse" }, { "mid": "/m/0d1pv", "title": "Alexandra of Denmark", "type": "Empress of India" }, { "mid": "/m/0j2jr", "title": "Crewe Alexandra F.C.", "type": "Football club" }, { "mid": "/m/06dyrz", "title": "Alexandra Feodorovna", "type": "Charlotte of Prussia" }, { "mid": "/m/01pn56", "title": "Princess Alexandra, The Honourable Lady Ogilvy", "type": "Royal Lady of the Garter" } ]    
+            })
+            */
+            this.GoogleAutoComplete_data = [ { "mid": "/m/0d7d5", "title": "Alexandra Feodorovna", "type": "Alix of Hesse" }, { "mid": "/m/0d1pv", "title": "Alexandra of Denmark", "type": "Empress of India" }, { "mid": "/m/0j2jr", "title": "Crewe Alexandra F.C.", "type": "Football club" }, { "mid": "/m/06dyrz", "title": "Alexandra Feodorovna", "type": "Charlotte of Prussia" }, { "mid": "/m/01pn56", "title": "Princess Alexandra, The Honourable Lady Ogilvy", "type": "Royal Lady of the Garter" } ]    
         },
         getName: function(){
-            //CreateStr
+            /*
             let queryStr = "?n="+this.n;
-            // Data: id, name, gender, occurrences, rank, year, syllables, meaning, unisex[int]
             axios.get("http://localhost:8088/name" + queryStr)
             .then(response => {
                this.name = response.data;
             })
-            //[ { "id": 110, "name": "Alexandra", "gender": "F", "occurrences": 2831, "rank": 109, "year": 2016, "syllables": 0, "meaning": "", "unisex": 0 } ]
+            */
+            this.name = [ { "id": 110, "name": "Alexandra", "gender": "F", "occurrences": 2831, "rank": 109, "year": 2016, "syllables": 0, "meaning": "", "unisex": 0 } ]
         },
         getVariations: function() {
+            /*
             axios.get("http://localhost:8088/variations/" + this.n)
             .then(response => {
                 this.variations = response.data;
-            })      
-            //[ { "name": "Alexandra" }, { "name": "Alexandria" }, { "name": "Alexandre" }, { "name": "Alexandro" }, { "name": "Alexandrea" }, { "name": "Alexandros" }, { "name": "Alexandru" }, { "name": "Alexander" }, { "name": "Alexandr" }, { "name": "Alexandar" } ]      
+            })
+            */
+            this.variations = [ { "name": "Alexandra" }, { "name": "Alexandria" }, { "name": "Alexandre" }, { "name": "Alexandro" }, { "name": "Alexandrea" }, { "name": "Alexandros" }, { "name": "Alexandru" }, { "name": "Alexander" }, { "name": "Alexandr" }, { "name": "Alexandar" } ]      
+        },
+        getItunes: function(){
+            console.log("https://itunes.apple.com/search?term="+this.n+"&entity=song&limit=5");
+            axios.get("https://itunes.apple.com/search?term="+this.n+"&entity=song&limit=5")
+            .then(response => {
+                this.itunes = response.data.results;
+                //console.log(this.itunes);
+            })
         }
     },
     mounted: function (){
@@ -197,6 +255,7 @@ export default {
         this.getGoogleAutoComplete();
         this.getHistory();
         this.getVariations();
+        this.getItunes();
     },
     filters: {
         GenderFilter(value){

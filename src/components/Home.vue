@@ -62,75 +62,27 @@
             </div>            
         </div>
         <!-- /Unique Names -->   
+        
 
         <!-- Collections -->
         <div id="link_row-collections" class="link-row clearfix">
-            <div class="collections-title">Fresh Collections</div>
-            <div class="collection">
-                <div class="collection-picture">
-                    Famous African American Women
-                </div>
-                <div class="collection-names clearfix">
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                </div>
-                <div class="collection-link">
-                    <v-btn depressed large>View Collection</v-btn>
-                </div>
-            </div>    
-            
-            
-            <div class="collection">
-
+            <div class="collections-title">Fresh Collections</div>            
+            <!-- Collection -->
+            <div v-for="collection in collections" class="collection">
                 <div class="collection-picture" :style="{ backgroundImage: `url('/static/images/collections/winter.jpg')` }">
-                    Famous African American Women
+                    Winter
+                    <div class="collection-names clearfix">
+                        <span>Christopher</span>
+                        <span>Scott</span>
+                        <span>Steve</span>
+                        <span>...</span>
+                    </div>  
                 </div>
-
-
-
-                <div class="collection-names clearfix">
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                </div>
-                <div class="collection-link">
-                    <v-btn depressed large>View Collection</v-btn>
-                </div>
-    
-    
-            </div> 
-            <div class="collection">
-    
-                
-    
-                <div class="collection-picture">
-                    Famous African American Women
-                </div>
-                <div class="collection-names clearfix">
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                    <div class="collection-name"><router-link to="/">Christopher</router-link></div>
-                </div>
-                <div class="collection-link">
-                    <v-btn depressed large>View Collection</v-btn>
-                </div>
-    
-    
-    
             </div> 
         </div>
         <!-- /Collections -->   
 
+        
         <!-- Alphabet -->
         <div id="link_row-alpha" class="link-row clearfix">
             <div class="alphas clearfix">
@@ -162,7 +114,8 @@ export default {
             boy_names_20: [],
             girl_names_20: [],
             alphabet: alphabet,
-            imgSRC: "christmas.jpeg"
+            imgSRC: "christmas.jpeg",
+            collections: [1,2,3,4,5,6]
         };
     },
     methods: {

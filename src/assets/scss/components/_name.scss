@@ -13,6 +13,7 @@
 #name_container{
     font-family: $Muli;
     @include standard_size(0, 20px, $max_width: 1200px);
+    color: $color-text !important;
 }
 .name-row{
     width:100%;
@@ -23,12 +24,17 @@
         float: left;
     }
 }
-.name-title{
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #999;
+h2{ // Section Title
+    //font-size: 10px;
+    //letter-spacing: 1px;
+    //text-transform: uppercase;
+    //font-weight: 500;
+    color: $color-text-lightgrey;
+    font-weight: 900;
+    padding-bottom:10px;
+    font-family: $Nixie;
+    
+    font-size: 12px;
 }
 
 /* --------------------------------------------
@@ -42,14 +48,28 @@
     margin: 0 auto;
 }
 
+#name_row-social{
+    margin-top: 25px;  
+    padding: 0; 
+    text-align: right;
+    border-bottom: none;
+    i{
+        padding-left: 10px;
+    }
+    button{
+        background-color: $color-white !important;
+        color: $color-accent-1 !important;
+    }
+}
+
 
 /* --------------------------------------------
 *  Row 1 - Name, Google
 *
 */
 #name_row-name{  
-    margin-top:50px;  
-    padding: 0 0 25px 0;
+    margin-top: 10px;  
+    padding: 0 0 50px 0;
     #name-name{
         width: 50%;
         height: 200px;
@@ -59,7 +79,8 @@
             font-size: 96px;
             line-height:64px;
             color: $color-uni;
-            padding: 25px 0;
+            padding: 35px 0 25px 0;
+            font-family: $Nixie;
             &.boy{
                 color: darken($color-boy, 15%);
             }
@@ -67,18 +88,25 @@
                 color: darken($color-girl, 15%);
             }
         }
-        #name-id{
-            font-size: 18px;
-            font-weight: 900;
-        }
         #name-meaning{
             font-style: italic;
+            font-size: 14px;
         }
-        #name-occurrence{
-            
-        }
+        #name-stats{
+            border-top: 1px dashed darken($color-background, 5%);
+            width: 90%;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-size: 14px;
+            #name-id{
+                
+            }
+            .name-occurrence{
 
+            }            
+        }
         #name-origin{
+            font-size: 14px;
             .origin-link{
                 padding-right: 5px;
                 &::after{
@@ -96,10 +124,10 @@
     }
     #name-google{
         width: 50%;
-        height: 250px;
+        height: 275px;
         float: left;
         canvas{
-            height: 250px !important;
+            height: 275px !important;
             width:100%!important;
         }
     }
@@ -113,52 +141,161 @@
         .name_row-variation{
             width: 50%;
             float: left;
-            padding: 2px 0;
-            font-size: 20px;
-            font-weight: 300;        
+            padding-bottom: 10px;
+            font-size: 18px;
+            font-weight: 700; 
             a{
                 color: $color-accent-1;
+                //border-bottom: 1px solid $color-accent-1;                
                 text-decoration: underline;
+            }
+        }
+    }
+    #name_row-autocomplete{
+        .autocomplete-topic{
+            .autocomplete-title{
+                font-size: 18px;
+            }  
+            .autocomplete-type{
+                font-size: 12px;
+                padding-bottom: 5px;
+                font-style: italic;
+                font-weight: 200;
+            }
+        } 
+    }
+    #name_row-collections{
+        .name_row-collection{
+            font-size: 18px;
+            padding-bottom: 5px;
+            padding-right: 25px;
+            box-sizing: border-box;
+            a{
+                color: $color-accent-1 !important;
+                text-decoration: underline;
+            }
+        }
+    }
+    #name_row-songs{
+        a.name-song{
+            display: block;
+            color: inherit !important;
+            //background-color: $color-white;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+            //border-radius: 2px;
+            //box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);            
+            border-bottom: 1px solid darken($color-background, 10%);
+            &:hover{
+                transition: .25s;
+                .song-icon{
+                    color: $color-accent-1 !important;   
+                }
+            }
+            .song-details{
+                float: left;
+                font-size: 12px;
+                .song-title{
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+                .song-artist{
+                    font-weight: 200;
+                }
+            }
+            .song-icon{
+                padding-top: 5px;
+                float: right;
+                vertical-align: middle;             
             }
         }
     }
 }
 
 
-#name_row-th_col{
+#name_row-related{
     margin-top: 25px;  
     padding: 0 0 25px 0; 
+    .name-related{
+        width: 16.6666%;
+        float: left;
+        padding-bottom: 10px;
+        font-size: 18px;
+        font-weight: 700; 
+        a{
+            color: $color-accent-1;
+            //border-bottom: 1px solid $color-accent-1; 
+            text-decoration: underline;
+        }        
+    }
 }
 
 #name_row-gifts{
     margin-top: 25px;  
     padding: 0 0 25px 0; 
-    .name-title{
-        margin-bottom: 10px;
-    }
     .gifts-item{
         width: 24.25%;
         float: left;
         margin-right: 1%;
         .gi_photo{
+            padding: 20px;
+            background-color: $color-white;
+            border-bottom: 1px solid darken($color-background, 5%);
             img{
-                border: 1px solid darken($color-background, 15%);
+                
             }
         }
         .gi_description{
-            font-weight: 600; 
+            font-weight: 300;
+            font-size: 18px;
+            
         }
         .gi_price{
-                       
+            color: #709A42;
+            font-weight: 700;
+            font-size: 14px;
         }
         &:last-child{
             margin-right: 0;
         }
-    }  
+    } 
 }
 
 
 #name_row-amazon{
+    margin-top: 25px;  
+    padding: 0 0 25px 0; 
+    .amazon-item{
+        width: 15.8333%;
+        float: left;
+        margin-right: 1%;
+        padding: 20px;
+        background-color: $color-white;
+        border-bottom: 1px solid darken($color-background, 5%);
+        .a_photo{
+            img{
+                
+            }
+        }
+        .a_description{
+            font-weight: 300;
+            font-size: 14px;
+            padding-top: 10px;
+        }
+        .a_price{
+            color: #709A42;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }     
+}
+
+#name_row-google{
     margin-top: 25px;  
     padding: 0 0 25px 0; 
 }

@@ -5,16 +5,21 @@ const { reactiveProp } = mixins;
 var options = { 
     responsive: true, 
     maintainAspectRatio: false, 
+    legend: { display: false },
     scales: { 
         yAxes: [{ 
+            display: true,
             gridLines: {
                 display: true 
+            },
+            ticks: {
+                display: false
             }
         }], 
         xAxes: [{
             display: true,
             gridLines: {
-                display: false 
+                display: true 
             },  
         }] 
     } 

@@ -7,13 +7,13 @@
         </div>
         <!-- /Ad -->
 
-        <h1>
-            Explore Names
-        </h1>
-
         <!-- Explore Content -->
         <div id="explore_content" class="clearfix">
-            
+
+            <h1>
+                Find the unqiue name for your child
+            </h1>
+
             <!-- Filters & Names -->                     
             <div id="explore-content">
                 <div id="all_filters">
