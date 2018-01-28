@@ -71,6 +71,11 @@
             &.uni{
                 background-color: $color-uni;
             } 
+            transition: .3s cubic-bezier(.25,.8,.5,1);
+            &:hover{
+                box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+                cursor: pointer;
+            }  
         }
         #or{
            color: $color-white;
@@ -129,6 +134,14 @@
 .link-row{
     @include standard_size(50px, 25px, $max_width: 1024px);
     border-top: 1px solid $color-lines;
+    .link_row-title{
+        width: 100%;
+        font-size: 18px;
+        padding: 10px 0;
+        font-family: $Nixie;
+        font-weight: 900;
+        color: $color-text;
+    } 
 }
 #link_row-names{
     .random_names{
@@ -136,10 +149,6 @@
         float:left;
         padding: 25px;
         box-sizing: border-box;
-        .random_names-title{
-            font-size: 18px;
-            padding: 10px 0;
-        }
         .name{
             width: 25%;
             float: left;
@@ -162,15 +171,7 @@
     }
 }
 #link_row-collections{
-    padding: 25px;
-    .collections-title{
-        width: 100%;
-        font-size: 18px;
-        padding-bottom: 25px;
-        font-family: $Nixie;
-        font-size: 18px;
-        font-weight: 900;
-    }    
+    padding: 25px;   
     .collection{
         margin-top: 1%;
         width: 32.6666%;
@@ -214,7 +215,6 @@
                 }                
             }
         }
-
         .collection-link{
             padding:3px 0 20px 0;
             text-align: center;
@@ -233,10 +233,6 @@
         float:left;
         padding: 25px;
         box-sizing: border-box;
-        .alphas-title{
-            font-size: 18px;
-            padding: 10px 0;
-        }
         .alpha{
             width: 12.5%;
             float: left;
@@ -256,3 +252,21 @@
         }
     } 
 }
+#link_row-origin{
+    .origins{
+        width:100%;
+        float:left;
+        padding: 25px;
+        box-sizing: border-box;
+        .origin{
+            width: 16.6667%;
+            float: left;
+            padding: 10px 0;
+            a{
+                text-decoration: underline;
+                color: darken($color-accent-1, 5%);
+            }         
+        }
+    } 
+}
+

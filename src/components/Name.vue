@@ -19,11 +19,10 @@
                 <h1 v-bind:class="{girl: name[0].gender == 'F', boy: name[0].gender == 'M'}">
                     {{name[0].name}}
                 </h1>
-                <div id="name-meaning">Sophie (meaning "Wisdom") is the diminutive of Sophia. </div>
+                <div id="name-meaning">This name is so uncommon, we don't even know what it means yet!</div>
                 <div id="name-origin">Origin: <span class="origin-link"><router-link to="/">Origin1</router-link></span><span class="origin-link"><router-link to="/">Origin1</router-link></span></div>
-                <div id="name-origin">Themes: <span class="origin-link"><router-link to="/">Origin1</router-link></span><span class="origin-link"><router-link to="/">Origin1</router-link></span></div>
                 <div id="name-stats">
-                    <div id="name-id">Popular, #{{name[0].rank | Commas}}</div>
+                    <div id="name-id">{{name[0].rank | Popularity}}, #{{name[0].rank | Commas}}</div>
                     <div class="name-occurrence">{{name[0].occurrences | Commas}} baby {{name[0].gender | GenderFilter}}s were named {{name[0].name}} last year.</div>
                     <div v-if="name[1]" class="name-occurrence">{{name[1].occurrences | Commas}} baby {{name[1].gender | GenderFilter}}s were named {{name[1].name}} last year.</div>
                 </div>
@@ -32,7 +31,7 @@
                 <h2>
                     Is {{name[0].name}} a popular name?
                 </h2>
-                <history-chart :chart-data="History_data"></history-chart>
+                <history-chart :chart-data="History_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales: { yAxes: [{ ticks: {display: false}}]} }"></history-chart>
             </div>
         </div>
         <!-- /Name Row -->
@@ -42,7 +41,8 @@
             <div id="name_row-variations" class="row-25 clearfix">
                 <h2>Variations of {{name[0].name}}</h2>
                 <div class="name_row-variation" v-for="variation in variations">
-                    <router-link :to="`/name?n=${variation.name}`">{{variation.name}}</router-link>
+                    <!-- <router-link :to="`/name?n=${variation.name}`">{{variation.name}}</router-link> -->
+                    <a :href="'/name?n=' + variation.name">{{variation.name}}</a>
                 </div>
 
             </div>
@@ -66,7 +66,7 @@
                 <h2>What is {{name[0].name}}'s song?</h2>
                 <a target="_blank" v-bind:href="song.trackViewUrl" tag="div" class="name-song clearfix" v-for="song in itunes">
                     <div class="song-details">
-                        <div class="song-title">{{song.trackName}}</div>
+                        <div class="song-title">{{song.trackName | SongTruncate}}</div>
                         <div class="song-artist">{{song.artistName}}</div>
                     </div>
                     <div class="song-icon"><v-icon>play_arrow</v-icon></div> 
@@ -84,8 +84,8 @@
         <div id="name_row-google" class="name-row clearfix">
             <h2>Google Searches for {{name[0].name}}</h2>
 
-            <!--<line-chart :chart-data="GoogleChart_data"></line-chart>-->
-            <!--<line-chart :chart-data="GoogleChart_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales:{yAxes:[{ticks:{suggestedMax:100,suggestedMin:0}}], xAxes:[{display:true, gridLines: {display: false}}]}}"></line-chart>-->
+            
+            <line-chart :chart-data="GoogleChart_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales:{yAxes:[{ticks:{suggestedMax:100,suggestedMin:0}}], xAxes:[{display:true, gridLines: {display: false}}]}}"></line-chart>
         </div>
         
         <!-- TODO: BOY GIFTS!! -->
@@ -205,42 +205,80 @@ export default {
             })
         },
         getHistory: function (){
+            axios.get("http://localhost:8088/history/" + this.n)
+            .then(response => {
+                console.log(response.data);
+                let girlHistory = [];
+                let boyHistory = [];
+                let years = ["2007", "2008", "2009", "2010","2011", "2012", "2013", "2014","2015", "2016"];
+                //years.forEach(year => {
+                response.data.forEach(element => {
+                    if(element.gender == "F"){
+                        girlHistory.push(element.occurrence);
+                        if(response.data.length > 1 && element.occurrence < 25){
+                            girlHistory.pop(element.occurrence);
+                        }
+                    }
+                    if(element.gender == "M"){
+                        boyHistory.push(element.occurrence);
+                        if(response.data.length > 1 && element.occurrence < 25){
+                            boyHistory.pop(element.occurrence);
+                        }
+                    }                    
+                }); 
+                //});
+
+                console.log(girlHistory);
+                console.log(boyHistory);
+
+
+                if(girlHistory && boyHistory){
+                    this.History_data = {labels: years,"datasets":[{"label": "Boys ", "backgroundColor":"rgba(74,124,152,.9)", "borderColor": "rgba(0,0,0,0)","data":boyHistory},{"label": "Girls ", "backgroundColor":"rgba(213,97,127,.9)", "borderColor": "rgba(0,0,0,0)","data":girlHistory}]};
+                }
+                
+            })
+            
             //[{'year': 2005, 'occurrences': 6050},{'year': 2006, 'occurrences': 5050},{'year': 2007, 'occurrences': 3050},{'year': 2008, 'occurrences': 8050},{'year': 2009, 'occurrences': 2340},{'year': 2010, 'occurrences': 2050},{'year': 2011, 'occurrences': 6344}],
-            var data_obj = [234,300,500,836,4645,6756,7456,745,546,456,5457,4567];
-            var data_labels = ['2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016'];
-            this.History_data = {labels: data_labels,"datasets":[{"label": "Babies", "backgroundColor":"rgba(43,176,165,.6)", "borderColor": "rgba(0,0,0,0)","data":data_obj}]};
+            //var data_obj = [234,300,500,836,4645,6756,7456,745,546,456,5457,4567];
+            //var data_labels = ['2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016'];
+            //this.History_data = {labels: data_labels,"datasets":[{"label": "Babies", "backgroundColor":"rgba(43,176,165,.6)", "borderColor": "rgba(0,0,0,0)","data":data_obj}]};
+            
         },
         getGoogleAutoComplete: function (){
-            /*
+            
             axios.get("http://localhost:8088/google-autocomplete/" + this.n)
             .then(response => {
                 //console.log(response);
                 this.GoogleAutoComplete_data = response.data.default.topics;
             })
-            */
-            this.GoogleAutoComplete_data = [ { "mid": "/m/0d7d5", "title": "Alexandra Feodorovna", "type": "Alix of Hesse" }, { "mid": "/m/0d1pv", "title": "Alexandra of Denmark", "type": "Empress of India" }, { "mid": "/m/0j2jr", "title": "Crewe Alexandra F.C.", "type": "Football club" }, { "mid": "/m/06dyrz", "title": "Alexandra Feodorovna", "type": "Charlotte of Prussia" }, { "mid": "/m/01pn56", "title": "Princess Alexandra, The Honourable Lady Ogilvy", "type": "Royal Lady of the Garter" } ]    
+            
+            //this.GoogleAutoComplete_data = [ { "mid": "/m/0d7d5", "title": "Alexandra Feodorovna", "type": "Alix of Hesse" }, { "mid": "/m/0d1pv", "title": "Alexandra of Denmark", "type": "Empress of India" }, { "mid": "/m/0j2jr", "title": "Crewe Alexandra F.C.", "type": "Football club" }, { "mid": "/m/06dyrz", "title": "Alexandra Feodorovna", "type": "Charlotte of Prussia" }, { "mid": "/m/01pn56", "title": "Princess Alexandra, The Honourable Lady Ogilvy", "type": "Royal Lady of the Garter" } ]    
         },
         getName: function(){
-            /*
             let queryStr = "?n="+this.n;
             axios.get("http://localhost:8088/name" + queryStr)
             .then(response => {
                this.name = response.data;
+               if(this.name.length > 1){
+                this.name.forEach(element => {
+                    if(element.occurrences < 25){this.name.pop(element)}
+                });
+               }
             })
-            */
-            this.name = [ { "id": 110, "name": "Alexandra", "gender": "F", "occurrences": 2831, "rank": 109, "year": 2016, "syllables": 0, "meaning": "", "unisex": 0 } ]
+            
+            //this.name = [ { "id": 110, "name": "Alexandra", "gender": "F", "occurrences": 2831, "rank": 109, "year": 2016, "syllables": 0, "meaning": "", "unisex": 0 } ]
         },
         getVariations: function() {
-            /*
+            
             axios.get("http://localhost:8088/variations/" + this.n)
             .then(response => {
                 this.variations = response.data;
             })
-            */
-            this.variations = [ { "name": "Alexandra" }, { "name": "Alexandria" }, { "name": "Alexandre" }, { "name": "Alexandro" }, { "name": "Alexandrea" }, { "name": "Alexandros" }, { "name": "Alexandru" }, { "name": "Alexander" }, { "name": "Alexandr" }, { "name": "Alexandar" } ]      
+            
+            //this.variations = [ { "name": "Alexandra" }, { "name": "Alexandria" }, { "name": "Alexandre" }, { "name": "Alexandro" }, { "name": "Alexandrea" }, { "name": "Alexandros" }, { "name": "Alexandru" }, { "name": "Alexander" }, { "name": "Alexandr" }, { "name": "Alexandar" } ]      
         },
         getItunes: function(){
-            console.log("https://itunes.apple.com/search?term="+this.n+"&entity=song&limit=5");
+            //console.log("https://itunes.apple.com/search?term="+this.n+"&entity=song&limit=5");
             axios.get("https://itunes.apple.com/search?term="+this.n+"&entity=song&limit=5")
             .then(response => {
                 this.itunes = response.data.results;
@@ -250,8 +288,8 @@ export default {
     },
     mounted: function (){
         //this.getActors();
-        //this.getGoogleTrends();
         this.getName();
+        this.getGoogleTrends();
         this.getGoogleAutoComplete();
         this.getHistory();
         this.getVariations();
@@ -274,6 +312,24 @@ export default {
         Commas(value){
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
+        SongTruncate(value){
+            return (value.length > 30 ?  value.substring(0, 30) + "[...]" : value);
+        },
+        Popularity(value){
+            if(value <= 100){
+                return "Popular";
+            }else if(value > 100 && value <= 700){
+                return "Unique";
+            }else if(value > 700 && value <= 875){
+                return "Uncommon";
+            }else if(value > 875 && value <= 930){
+                return "Rare";
+            }else if(value > 930 && value <= 945){
+                return "Obscure";
+            }else if(value > 945){
+                return "Original";
+            }
+        }
     }
 };
 </script>

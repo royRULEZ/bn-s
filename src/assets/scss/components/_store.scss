@@ -1,0 +1,36 @@
+/*
+*
+*   Store.vue
+*   Roy Peckham
+*
+*/
+
+
+/* --------------------------------------------
+*  Main / General
+*
+*/
+#store_container{
+    font-family: $Muli;
+    color: $color-text !important;
+}
+
+/* --------------------------------------------
+*  Hero
+*
+*/
+#store_hero{
+    width: 100%;
+    margin-bottom: 25px;
+    height: 350px;
+    //background-color: darken($color-background, 10%);
+    background: linear-gradient(to top right, #43deac, #23caef);
+    #ad{
+        width: 970px;
+        height: 400px;
+        background-color: $color-white;
+        margin: 0 auto;
+        position: relative;
+        top: 50px;
+    }
+}

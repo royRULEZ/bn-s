@@ -71,6 +71,19 @@
                             ></v-select>
                         </div>
                         <div class="filter-section">
+                            <div v-if="this.o" class="all_filters-label">Origin</div>
+                            <v-select
+                                label="Origin"
+                                v-model="origin"
+                                :items="origins"
+                                single-line
+                                hide-details    
+                                id="origin_select" 
+                                solo
+                                v-bind:class="{ active: origin }"
+                            ></v-select>
+                        </div>                          
+                        <div class="filter-section">
                             <div v-if="this.t" class="all_filters-label">Theme</div>
                             <v-select
                                 label="Theme"
@@ -83,19 +96,6 @@
                                 v-bind:class="{ active: theme }"
                             ></v-select>
                         </div>
-                        <div class="filter-section">
-                            <div v-if="this.o" class="all_filters-label">Origin</div>
-                            <v-select
-                                label="Origin"
-                                v-model="origin"
-                                :items="origins"
-                                single-line
-                                hide-details    
-                                id="origin_select" 
-                                solo
-                                v-bind:class="{ active: origin }"
-                            ></v-select>
-                        </div>     
                         <div id="filters-selected">
                             <div class="all_filters-label">Selected Filters</div>
                             <div v-if="this.p">Popularity: {{popularity}}</div>

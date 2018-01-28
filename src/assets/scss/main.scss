@@ -23,6 +23,9 @@
 @import "components/name";
 @import "components/inspire";
 @import "components/collection";
+@import "components/store";
+
+@import "components/ad";
 
 
 /* -------------------------------------------------
@@ -131,7 +134,29 @@ header{
         }
     }
 }
-
+#search_nav{
+    padding-bottom: 0 !important;
+}
+#search_app{
+    padding: 25px; 
+    box-sizing: border-box;
+    #search_app-helper{
+        padding-top: 10px;
+        font-size: 10px;
+        color: $color-text-lightgrey;
+    }
+}
+.sideNav-menuItem{
+    padding: 10px 16px;
+    box-sizing: border-box;
+    &:hover{
+        background-color: $color-background;
+        cursor: pointer;
+    }
+    &.section{
+        border-bottom: 1px solid $color-background;
+    }
+}
 
 
 

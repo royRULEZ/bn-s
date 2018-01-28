@@ -23,9 +23,9 @@
                 <div id="or">
                     or
                 </div>
-                <div class="bn_hero-cta">
+                <router-link tag="div" class="bn_hero-cta" to="/get-inspired">
                     Get Inspired   
-                </div>                           
+                </router-link>                           
             </div>
         </div>
         <!-- /Hero -->
@@ -49,15 +49,15 @@
         <!-- Unique Names -->
         <div id="link_row-names" class="link-row clearfix">
             <div class="random_names clearfix">
-                <div class="random_names-title">20 Unique Boy Names</div>
+                <div class="link_row-title">20 Unique Boy Names</div>
                 <div class="name boy" v-for="b_name in boy_names_20" :key="b_name">
-                    <router-link :to="`/name/${b_name.name}`">{{b_name.name}}</router-link>
+                    <router-link :to="`/name?n=${b_name.name}`">{{b_name.name}}</router-link>
                 </div>
             </div>
             <div class="random_names clearfix">
-                <div class="random_names-title">20 Unique Girl Names</div>
+                <div class="link_row-title">20 Unique Girl Names</div>
                 <div class="name girl" v-for="g_name in girl_names_20" :key="g_name">
-                    <router-link :to="`/name/${g_name.name}`">{{g_name.name}}</router-link>
+                    <router-link :to="`/name?n=${g_name.name}`">{{g_name.name}}</router-link>
                 </div>
             </div>            
         </div>
@@ -66,7 +66,7 @@
 
         <!-- Collections -->
         <div id="link_row-collections" class="link-row clearfix">
-            <div class="collections-title">Fresh Collections</div>            
+            <div class="link_row-title">Fresh Collections</div>            
             <!-- Collection -->
             <div v-for="collection in collections" class="collection">
                 <div class="collection-picture" :style="{ backgroundImage: `url('/static/images/collections/winter.jpg')` }">
@@ -86,20 +86,37 @@
         <!-- Alphabet -->
         <div id="link_row-alpha" class="link-row clearfix">
             <div class="alphas clearfix">
-                <div class="alphas-title">Search By Letter - Boys</div>
+                <div class="link_row-title">Search By Letter - Boys</div>
                 <div class="alpha boy" v-for="alpha in alphabet" :key="alpha">
                     <router-link :to="`/explore?p=Unique&g=M&a=${alpha}`">{{alpha}}</router-link>
                 </div>
             </div>         
             <div class="alphas clearfix">
-                <div class="alphas-title">Search By Letter - Girls</div>
+                <div class="link_row-title">Search By Letter - Girls</div>
                 <div class="alpha girl" v-for="alpha in alphabet" :key="alpha">
                     <router-link :to="`/explore?p=Unique&g=F&a=${alpha}`">{{alpha}}</router-link>
                 </div>
             </div>            
         </div>
-        <!-- /Alphabet -->               
+        <!-- /Alphabet -->     
 
+
+        <!-- Origin -->
+        <div id="link_row-origin" class="link-row clearfix">
+            <div class="origins clearfix">
+                <div class="link_row-title">Names by Origin</div>
+                <div class="origin" v-for="origin in origins" :key="origin">
+                    <router-link :to="`/explore?p=Unique&g=M&a=${origin}`">{{origin}}</router-link>
+                </div>
+            </div>                 
+        </div>
+        <!-- /Origin -->                
+
+        <!-- Ads / Offer -->
+        <div class="ad-row size-1024 border clearfix">
+            <offer></offer>
+        </div>
+        <!-- Ads / Offer -->
 
     </div>
 </template>
@@ -107,15 +124,20 @@
 <script>
 const alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 import axios from 'axios';
+import Offer from './sub_components/Offer';
 export default {
     name: "home",
+    components:{
+        'offer': Offer
+    },    
     data() {
         return {
             boy_names_20: [],
             girl_names_20: [],
             alphabet: alphabet,
             imgSRC: "christmas.jpeg",
-            collections: [1,2,3,4,5,6]
+            collections: [1,2,3,4,5,6],
+            origins: ["African", "American", "Arabic", "Celtic", "Chinese", "Czech", "Danish", "Dutch", "Egyptian", "English", "Finnish", "French", "German", "Greek", "Hebrew", "Hungarian", "Irish", "Italian", "Japanese", "Latin", "Native American", "Norse", "Polish", "Portuguese", "Russian", "Scandinavian", "Scottish", "Slavic", "Spanish", "Swedish", "Welsh", "Yiddish"]            
         };
     },
     methods: {

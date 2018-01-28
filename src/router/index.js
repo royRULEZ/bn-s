@@ -7,6 +7,7 @@ import Explore from '@/components/Explore'
 import Inspire from '@/components/Inspire'
 import Store from '@/components/Store'
 import Collection from '@/components/Collection'
+import Blog from '@/components/Blog'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
     path: '/collection/:collection',
     name: 'Collection',
     component: Collection
+  },
+  {
+    path: '/how-to-choose-a-baby-name',
+    name: 'Blog',
+    component: Blog
   },
   {
     path: '/store',

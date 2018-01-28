@@ -29,7 +29,8 @@
             </div>
         
             <!-- Collection Names -->
-            <div id="collection-names" class="clearfix">
+            <!--
+            <div id="collection-list" class="clearfix">
                 <div class="collection-gender clearfix">
                     <div class="collections_gender-label">Girl Names</div>
                     <div class="collection-name" v-for="name in collectionNames">
@@ -43,7 +44,25 @@
                     </div>
                 </div>                
             </div>
+            -->
+
+            <!-- Collection Profiles -->
+            <div id="collection-profiles" class="clearfix">
+                <div class="cp-row clearfix" v-for="bio in collectionBios">
+                    <div class="cp_photo"></div>
+                    <div class="cp_bio">
+                        <div class="cp_bio-name">
+                            Roy Peckham
+                        </div>
+                        <div class="cp_bio-bio">
+                            The concept of the hero can be found in classical literature. It is the main or revered character in heroic epic poetry celebrated through ancient legends of a people, often striving for military conquest and living by a continually flawed personal honor code. The definition of a hero has changed throughout time. 
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <!-- Collection Profiles -->
             
+
             <!-- Collection Ad Space -->
             <div id="collection-ads" class="clearfix">
                 <div class="collection-label">Gifts & Offers</div>
@@ -84,13 +103,21 @@
 </template>
 
 <script>
+/*
+Developer Notes
+
+Type will be important. Bio, List
+
+
+*/
 import axios from 'axios';
 export default {
     name: 'collection',
     data () {
         return {
             collectionName: this.$route.params.collection,
-            collectionNames: ["Courtney","Samantha","Stacey","Carol","Cathe","Chris","Cindy","Sheri","Scott","Shelly","Steve","Courtney","Samantha","Stacey","Carol","Cathe","Chris","Cindy","Sheri","Scott","Shelly","Steve"]
+            collectionNames: ["Courtney","Samantha","Stacey","Carol","Cathe","Chris","Cindy","Sheri","Scott","Shelly","Steve","Courtney","Samantha","Stacey","Carol","Cathe","Chris","Cindy","Sheri","Scott","Shelly","Steve"],
+            collectionBios: [1,2,3,4,5,6,7,8,9,10]
         };
     },
     methods: {

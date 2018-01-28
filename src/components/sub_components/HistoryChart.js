@@ -26,12 +26,14 @@ var options = {
 };
 
 
+scales: { yAxes: [{ ticks: {display: false}}]} 
+
 
 export default {
     extends: Line,
     mixins: [reactiveProp],
     props: ['options'],
     mounted() {
-        this.renderChart(this.chartData, options)
+        this.renderChart(this.chartData, this.options)
     }
 }
