@@ -27,6 +27,7 @@
     $bg-color: #FFF;
     $dot-color: darken($color-background, 10%);
     // Grid
+    /*
     $dot-size: 1px;
     $dot-space: 10px;
     background:
@@ -34,33 +35,68 @@
     linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
     $dot-color;
     background-size: $dot-space $dot-space;    
+    */
     background: #EEE url('assets/images/header_normal.png');
     background-position: center;
     background-size: cover;
-    // /Grid
+ 
+    //background: linear-gradient(to top right, #43deac, #23caef);
+    //background: linear-gradient(to top right, $color-girl, $color-boy);
+
+    //background-color: #ffffff;
+    //background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a19587' fill-opacity='0.4'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    //background-color: #ffffff;
+    //background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23a19587' fill-opacity='0.4' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+
+    //background-color: #ffffff;
+    //background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ccc5bc' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    //background-attachment: fixed;
+
+    //background: #EEE url('/static/images/patterns/5.png');
+    //background-repeat: repeat;
+    //background-attachment: fixed;
+    border-top: 1px solid lighten($color-uni, 25%);
     #bn_hero-inner{
-        @include standard_size(0, 0, $max_width: 510px);
+
+
+        div{
+            a{
+                &:first-child{
+                    div{
+                        margin-left:40px;
+                    }
+                }
+                &:last-child{
+                    div{
+                        margin-right:40px;
+                    }
+                }                
+            }
+        }
+        @include standard_size(0, 0, $max_width: 600px);
         h1{
             width:100% !important;
             display: block;
             text-align: center;
-            font-size: 28px;
-            line-height: 32px;
-            font-weight: 800;
-            color: #FFF;
+            font-size: 36px;
+            line-height: 46px;
+            font-weight: 100;
+            color: $color-white;
+            padding-bottom: 12.5px;
         }
         .bn_circle{
             margin: 25px;            
             float: left;
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             text-align: center;
             color: #FFF;
             font-weight: 100;
             font-size: 24px;
             font-family: $Nixie;
-            line-height: 120px;
+            line-height: 140px;
             cursor: pointer;
             &.boy{
                 background-color: $color-boy;
@@ -83,12 +119,13 @@
            font-family: $Nixie;
         }
         .bn_hero-cta{
-            margin-top: 10px;
+            margin-top: 12.5px;
             color: $color-white;
             border: 1px solid $color-white;
             display: inline-block;
-            padding: 10px 25px;
+            padding: 10px 30px;
             border-radius: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
             &:hover{
                 background-color: $color-white;
@@ -122,6 +159,9 @@
         text-align: center;
         font-size: 28px;
         color: $color-accent-1;
+        font-family: $Nixie;
+        font-weight: 900;
+        padding-bottom: 12.5px;
     }
 }
 

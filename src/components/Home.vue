@@ -15,10 +15,12 @@
                         <div class="bn_circle boy">
                             Boy
                         </div>    
-                    </router-link> 
-                    <div class="bn_circle uni">
-                        Unisex
-                    </div>
+                    </router-link>    
+                    <router-link to="/explore?p=Unique&g=U "> 
+                        <div class="bn_circle uni">
+                            Unisex
+                        </div>
+                    </router-link>
                 </div>
                 <div id="or">
                     or

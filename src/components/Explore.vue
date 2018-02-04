@@ -171,6 +171,27 @@ export default {
                this.names = response.data;
             })
         },
+        getNamesLive: function(){
+            //CreateStr
+            let queryStr = "?";
+            let queryArr = [];
+            if(this.popularity){queryArr.push("p="+this.popularity)}
+            if(this.gender){queryArr.push("g="+this.gender)}
+            if(this.length){queryArr.push("l="+this.length)}
+            if(this.alpha){queryArr.push("a="+this.alpha)}
+            if(this.theme){queryArr.push("t="+this.theme)}
+            if(this.origin){queryArr.push("o="+this.origin)}
+            for(var i = 0; i < queryArr.length; i++){
+                queryStr+=queryArr[i];
+                if(i != (queryArr.length-1)){
+                    queryStr+="&";
+                }
+            }
+            axios.get("http://localhost:8088/explore-names" + queryStr)
+            .then(response => {
+               this.names = response.data;
+            })
+        },        
     },
     mounted: function (){
         this.getNames();
@@ -201,7 +222,8 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();
+            this.getNamesLive();
+            //this.$router.go();
         },
         gender: function(){
             let queryObj = {};
@@ -212,7 +234,7 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();
+            this.getNamesLive();
         },
         length: function(){
             let queryObj = {};
@@ -223,7 +245,7 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();            
+            this.getNamesLive();           
         },
         alpha: function(){
             let queryObj = {};
@@ -234,7 +256,7 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();            
+            this.getNamesLive();           
         },
         theme: function(){
             let queryObj = {};
@@ -245,7 +267,7 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();            
+            this.getNamesLive();          
         },
         origin: function(){
             let queryObj = {};
@@ -256,7 +278,7 @@ export default {
             if(this.theme){queryObj["t"]=this.theme}
             if(this.origin){queryObj["o"]=this.origin}
             this.$router.push({path: 'explore', query: queryObj});
-            this.$router.go();          
+            this.getNamesLive();        
         }
     },
     filters: {
